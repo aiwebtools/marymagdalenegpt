@@ -58,11 +58,7 @@ const Hero = () => {
           Connect with the profound spiritual insight and wisdom of Mary Magdalene, discover your inner transformation and enlightenment.
         </p>
         
-        <p className="text-base md:text-xl text-divine italic mb-8 md:mb-12 font-light px-2">
-          "The Divine Spark is Within You My Child" - Mary Magdalene
-        </p>
-        
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 md:mb-16 px-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8 md:mb-10 px-4">
           <a href="https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" className="w-full sm:w-auto">
             <Button className="divine-btn group text-base md:text-lg w-full sm:w-auto">
               <span className="group-hover:text-white transition-colors">Speak with Mary Magdalene</span>
@@ -74,6 +70,11 @@ const Hero = () => {
             </Button>
           </a>
         </div>
+        
+        {/* Moved quote below the buttons */}
+        <p className="text-base md:text-xl text-divine italic mb-12 md:mb-16 font-light px-2">
+          "The Divine Spark is Within You My Child" - Mary Magdalene
+        </p>
 
         {/* Scroll Indicator - Hide on very small screens */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center hidden xs:flex">

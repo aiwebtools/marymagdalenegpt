@@ -45,7 +45,14 @@ const FloatingEye = () => {
   );
 };
 
-const FloatingCircle = ({ position, size, speed, color }: any) => {
+interface FloatingCircleProps {
+  position: [number, number, number];
+  size: number;
+  speed: number;
+  color: string;
+}
+
+const FloatingCircle = ({ position, size, speed, color }: FloatingCircleProps) => {
   const circleRef = useRef<THREE.Mesh>(null);
   
   useFrame(({ clock }) => {

@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Sphere, Torus } from '@react-three/drei';
+import { OrbitControls, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -52,6 +52,18 @@ interface FloatingCircleProps {
   color: string;
 }
 
+// Custom torus component to avoid issues with drei Torus
+const CustomTorus = ({ position, args, rotation, children }: any) => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  return (
+    <mesh ref={meshRef} position={position} rotation={rotation}>
+      <torusGeometry args={args} />
+      {children}
+    </mesh>
+  );
+};
+
 const FloatingCircle = ({ position, size, speed, color }: FloatingCircleProps) => {
   const circleRef = useRef<THREE.Mesh>(null);
   
@@ -65,12 +77,12 @@ const FloatingCircle = ({ position, size, speed, color }: FloatingCircleProps) =
   });
   
   return (
-    <Torus 
+    <mesh
       ref={circleRef}
-      args={[size, size / 10, 32, 100]} 
       position={position}
       rotation={[Math.PI / 2, 0, 0]}
     >
+      <torusGeometry args={[size, size / 10, 32, 100]} />
       <meshStandardMaterial 
         color={color} 
         emissive={color}
@@ -78,7 +90,7 @@ const FloatingCircle = ({ position, size, speed, color }: FloatingCircleProps) =
         transparent={true}
         opacity={0.7}
       />
-    </Torus>
+    </mesh>
   );
 };
 
@@ -179,7 +191,11 @@ const Scene = () => {
 };
 
 const ThreeScene = () => {
-  return <Scene />;
+  return (
+    <div className="absolute inset-0 z-0">
+      <Scene />
+    </div>
+  );
 };
 
 export default ThreeScene;

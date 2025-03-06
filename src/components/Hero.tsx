@@ -39,7 +39,7 @@ const Hero = () => {
       </div>
 
       {/* 3D Scene */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ height: '100%', width: '100%' }}>
         <ThreeScene />
       </div>
 

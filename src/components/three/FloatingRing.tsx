@@ -15,7 +15,7 @@ const FloatingRing = () => {
   
   return (
     <mesh ref={meshRef} rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[3, 0.3, 16, 100]} />
+      <torusGeometry args={[3, 0.3, 16, 64]} /> {/* Reduced geometry complexity from 100 to 64 */}
       <meshStandardMaterial 
         color="#D946EF" 
         emissive="#D946EF"

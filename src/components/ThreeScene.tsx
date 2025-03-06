@@ -6,8 +6,8 @@ import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const FloatingEye = () => {
-  const eyeRef = useRef<THREE.Mesh>(null);
-  const irisRef = useRef<THREE.Mesh>(null);
+  const eyeRef = useRef<THREE.Group>(null);
+  const irisRef = useRef<THREE.Group>(null);
   const { mouse } = useThree();
   
   useFrame(({ clock }) => {

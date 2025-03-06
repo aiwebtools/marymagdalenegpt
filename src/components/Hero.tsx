@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
@@ -39,7 +38,7 @@ const Hero = () => {
       </div>
 
       {/* 3D Scene */}
-      <div className="absolute inset-0 z-0" style={{ height: '100%', width: '100%' }}>
+      <div className="absolute inset-0 z-0" style={{ position: 'absolute', height: '100%', width: '100%' }}>
         <ThreeScene />
       </div>
 

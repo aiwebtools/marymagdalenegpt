@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for Mary Magdalene GPT
+				divine: {
+					DEFAULT: '#9b87f5', // Primary purple
+					light: '#D6BCFA',   // Light purple
+					dark: '#1A1F2C',    // Dark purple
+					glow: '#8B5CF6',    // Vivid purple for glow effects
+				},
+				mystic: {
+					DEFAULT: '#D946EF',  // Magenta pink
+					gold: '#F97316',     // Bright orange/gold
+					blue: '#0EA5E9',     // Ocean blue
 				}
 			},
 			borderRadius: {
@@ -70,26 +83,52 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				// Custom animations
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { opacity: '0.7' },
+					'50%': { opacity: '1' }
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-1000px 0' },
+					'100%': { backgroundPosition: '1000px 0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 20s linear infinite',
+				'fade-in': 'fade-in 0.7s ease-out',
+				'shimmer': 'shimmer 3s infinite linear'
+			},
+			backgroundImage: {
+				'radial-glow': 'radial-gradient(circle, rgba(155,135,245,0.15) 0%, rgba(10,10,20,0) 70%)',
+				'divine-gradient': 'linear-gradient(to right, #9b87f5, #D946EF)'
+			},
+			boxShadow: {
+				'neon': '0 0 5px theme("colors.divine.DEFAULT"), 0 0 20px theme("colors.divine.glow")',
+				'inner-glow': 'inset 0 0 20px theme("colors.divine.glow")'
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

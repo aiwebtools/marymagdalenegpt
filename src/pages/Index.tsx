@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -19,7 +18,7 @@ declare global {
 const Index = () => {
   useEffect(() => {
     // Update document title
-    document.title = "Mary Magdalene GPT | Divine Spiritual Guidance";
+    document.title = "Mary Magdalene Spiritual Guide | Divine Wisdom & Enlightenment";
     
     // Add meta description
     const metaDescription = document.querySelector('meta[name="description"]');

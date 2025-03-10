@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -10,22 +9,7 @@ import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 
-// Add proper YouTube IFrame API typing
-declare global {
-  interface Window {
-    YT: {
-      Player: new (
-        elementId: string,
-        config: {
-          videoId: string;
-          playerVars?: Record<string, any>;
-          events?: Record<string, (event: any) => void>;
-        }
-      ) => any;
-    };
-    onYouTubeIframeAPIReady: () => void;
-  }
-}
+// Type definitions moved to VideoSection.tsx
 
 const Index = () => {
   const [showDisclaimer, setShowDisclaimer] = useState(false);

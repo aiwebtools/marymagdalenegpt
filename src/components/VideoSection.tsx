@@ -1,6 +1,31 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Add proper YouTube IFrame API typing
+declare global {
+  interface Window {
+    YT: {
+      Player: new (
+        elementId: string,
+        config: {
+          videoId: string;
+          playerVars?: Record<string, any>;
+          events?: Record<string, (event: any) => void>;
+        }
+      ) => any;
+      PlayerState: {
+        UNSTARTED: number;
+        ENDED: number;
+        PLAYING: number;
+        PAUSED: number;
+        BUFFERING: number;
+        CUED: number;
+      };
+    };
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
 const VideoSection = () => {
   const [isYouTubeApiReady, setIsYouTubeApiReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

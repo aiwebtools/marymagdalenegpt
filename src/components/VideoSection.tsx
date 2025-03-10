@@ -29,6 +29,7 @@ declare global {
 const VideoSection = () => {
   const [isYouTubeApiReady, setIsYouTubeApiReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [useYouTubeAPI, setUseYouTubeAPI] = useState(true); // Track which player to use
   const playerRef = useRef<any>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoIdRef = useRef("23Bw0RcKT90");
@@ -46,7 +47,7 @@ const VideoSection = () => {
       if (!isYouTubeApiReady) {
         console.log("YouTube API load timeout - using fallback");
         // Using a direct iframe embedding as fallback
-        setIsYouTubeApiReady(false);
+        setUseYouTubeAPI(false); // Switch to fallback player
         setIsLoading(false);
       }
     }, 3000); // 3 second timeout
@@ -73,7 +74,7 @@ const VideoSection = () => {
 
   // Initialize player once API is ready
   useEffect(() => {
-    if (!isYouTubeApiReady) return;
+    if (!isYouTubeApiReady || !useYouTubeAPI) return; // Don't initialize if we're using fallback
 
     try {
       console.log("Initializing YouTube player");
@@ -98,6 +99,11 @@ const VideoSection = () => {
             event.target.unMute(); // Unmute once ready
             event.target.playVideo();
             
+            // Clear the timeout since we've successfully loaded the player
+            if (apiLoadingTimeoutRef.current) {
+              clearTimeout(apiLoadingTimeoutRef.current);
+            }
+            
             // Set a higher quality after player is loaded and playing
             setTimeout(() => {
               if (playerRef.current) {
@@ -108,6 +114,8 @@ const VideoSection = () => {
           onError: (event: any) => {
             console.error("YouTube player error:", event);
             setIsLoading(false);
+            // Switch to fallback on error
+            setUseYouTubeAPI(false);
           },
           onStateChange: (event: any) => {
             // Video has started playing
@@ -120,8 +128,10 @@ const VideoSection = () => {
     } catch (error) {
       console.error("Error initializing YouTube player:", error);
       setIsLoading(false);
+      // Switch to fallback on error
+      setUseYouTubeAPI(false);
     }
-  }, [isYouTubeApiReady]);
+  }, [isYouTubeApiReady, useYouTubeAPI]);
 
   return (
     <section className="py-24 bg-divine-dark/30">
@@ -132,11 +142,13 @@ const VideoSection = () => {
             className="relative w-full overflow-hidden rounded-xl shadow-[0_20px_50px_rgba(155,135,245,0.15)] border border-white/10 transition-all duration-500"
             style={{ aspectRatio: "16/9" }}
           >
-            {/* YouTube player container */}
-            <div id="youtube-player" className="absolute inset-0 w-full h-full"></div>
+            {/* YouTube API player container - only show if using API */}
+            {useYouTubeAPI && (
+              <div id="youtube-player" className="absolute inset-0 w-full h-full"></div>
+            )}
             
-            {/* Fallback for slow API loading */}
-            {!isYouTubeApiReady && !isLoading && (
+            {/* Fallback iframe - only show if not using API */}
+            {!useYouTubeAPI && !isLoading && (
               <iframe 
                 src={`https://www.youtube.com/embed/${videoIdRef.current}?autoplay=1&mute=0&controls=1&playsinline=1&modestbranding=1&rel=0&showinfo=0&origin=${window.location.origin}`}
                 title="Mary Magdalene Video" 

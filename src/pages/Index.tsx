@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import VideoSection from "@/components/VideoSection";
@@ -7,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
+import DisclaimerPopup from "@/components/DisclaimerPopup";
 
 // Add this to window type
 declare global {
@@ -16,6 +18,8 @@ declare global {
 }
 
 const Index = () => {
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+  
   useEffect(() => {
     // Update document title
     document.title = "Mary Magdalene Spiritual Guide | Divine Wisdom & Enlightenment";
@@ -56,10 +60,26 @@ const Index = () => {
       });
     });
     
+    // Check if user has seen the disclaimer
+    const hasAgreed = localStorage.getItem('disclaimerAgreed');
+    if (!hasAgreed) {
+      // Show disclaimer after a short delay for better UX
+      const timer = setTimeout(() => {
+        setShowDisclaimer(true);
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+    
     return () => {
       // Clean up if needed
     };
   }, []);
+
+  const handleAgreeDisclaimer = () => {
+    localStorage.setItem('disclaimerAgreed', 'true');
+    setShowDisclaimer(false);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -73,6 +93,12 @@ const Index = () => {
         <Disclaimer />
       </main>
       <Footer />
+      
+      {/* Disclaimer Popup */}
+      <DisclaimerPopup 
+        show={showDisclaimer} 
+        onAgree={handleAgreeDisclaimer} 
+      />
     </div>
   );
 };

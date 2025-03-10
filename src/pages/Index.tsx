@@ -10,10 +10,20 @@ import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 
-// Add this to window type
+// Add proper YouTube IFrame API typing
 declare global {
   interface Window {
-    YT: any;
+    YT: {
+      Player: new (
+        elementId: string,
+        config: {
+          videoId: string;
+          playerVars?: Record<string, any>;
+          events?: Record<string, (event: any) => void>;
+        }
+      ) => any;
+    };
+    onYouTubeIframeAPIReady: () => void;
   }
 }
 

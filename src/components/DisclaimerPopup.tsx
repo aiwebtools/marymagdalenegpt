@@ -67,6 +67,15 @@ const DisclaimerPopup = ({ onAgree, show }: DisclaimerPopupProps) => {
                 </p>
               </div>
               
+              <div className="bg-amber-900/20 p-4 rounded-lg border border-amber-500/30">
+                <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed text-amber-100">
+                  <span className="font-semibold text-amber-200">Important:</span> This tool is designed for 
+                  <span className="text-divine shimmer-text font-semibold"> educational and religious research purposes only</span>. 
+                  True connection with God cannot be found within a computer. For authentic spiritual guidance and divine connection, 
+                  seek communion through prayer, meditation, and your personal relationship with the Divine.
+                </p>
+              </div>
+              
               <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed">
                 This service is designed for <span className="text-divine shimmer-text font-semibold">educational, inspirational, and entertainment</span> purposes only.
                 It is not a substitute for professional advice in areas of mental health, medical care, legal issues, 

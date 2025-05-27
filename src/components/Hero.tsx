@@ -47,7 +47,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="container mx-auto px-4 relative z-10 text-center">
         <div className="inline-block mb-4 px-3 py-1 bg-white/5 backdrop-blur-sm rounded-full">
-          <p className="text-divine font-medium text-sm">Spiritual Guidance Through AI</p>
+          <p className="text-divine font-medium text-sm">Trained on Unaltered Nag Hammadi Texts (1945)</p>
         </div>
         
         <h1 className={`text-3xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 glow-text ${isMobile ? 'px-2' : ''}`}>
@@ -55,7 +55,7 @@ const Hero = () => {
         </h1>
         
         <p className="text-lg md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto font-[Cormorant_Garamond] leading-relaxed px-2">
-          Connect with the profound spiritual insight and wisdom of Mary Magdalene, discover your inner transformation and enlightenment.
+          Connect with the profound spiritual insight and wisdom of Mary Magdalene through AI trained exclusively on the unaltered Gnostic Christian texts discovered in the Nag Hammadi Library in 1945.
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8 md:mb-10 px-4">

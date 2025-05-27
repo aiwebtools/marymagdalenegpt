@@ -18,32 +18,32 @@ const Features = () => {
     {
       icon: <Eye className="w-7 h-7 text-divine" />,
       title: "Spiritual Insight",
-      description: "Gain profound spiritual wisdom drawn from the Gnostic Gospels and Mary Magdalene's teachings on inner awakening."
+      description: "Gain profound spiritual wisdom drawn from the unaltered Gnostic Christian texts of the Nag Hammadi Library, discovered in 1945, and Mary Magdalene's teachings on inner awakening."
     },
     {
       icon: <Heart className="w-7 h-7 text-divine" />,
       title: "Emotional Intelligence",
-      description: "Experience deeply emotional responses that reflect Mary's compassion and understanding of the human condition."
+      description: "Experience deeply emotional responses that reflect Mary's compassion and understanding of the human condition as revealed in the authentic Gnostic gospels."
     },
     {
       icon: <Book className="w-7 h-7 text-divine" />,
       title: "Sacred Knowledge",
-      description: "Access the secret knowledge imparted by the Christos and the mysteries of the divine through Mary's perspective."
+      description: "Access the secret knowledge imparted by the Christos and the mysteries of the divine through Mary's perspective, preserved in the original Nag Hammadi texts."
     },
     {
       icon: <Shield className="w-7 h-7 text-divine" />,
       title: "Spiritual Protection",
-      description: "Receive guidance on navigating life's challenges while protecting your divine spark from worldly illusions."
+      description: "Receive guidance on navigating life's challenges while protecting your divine spark from worldly illusions, based on unmodified ancient wisdom."
     },
     {
       icon: <Sparkles className="w-7 h-7 text-divine" />,
       title: "Divine Awakening",
-      description: "Awaken the slumbering spark within, illuminating your path back to the divine source of all being."
+      description: "Awaken the slumbering spark within, illuminating your path back to the divine source through teachings from the pristine Gnostic texts."
     },
     {
       icon: <Star className="w-7 h-7 text-divine" />,
       title: "Transformative Guidance",
-      description: "Embark on a journey of inner transformation with guidance rooted in love and ancient wisdom."
+      description: "Embark on a journey of inner transformation with guidance rooted in love and the unaltered ancient wisdom of the Nag Hammadi discovery."
     }
   ];
 
@@ -58,7 +58,7 @@ const Features = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold glow-text mb-6">Discover The Sacred Wisdom</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Experience the profound spiritual insight and transformative guidance of Mary Magdalene through advanced AI technology.
+            Experience the profound spiritual insight and transformative guidance of Mary Magdalene through advanced AI technology, trained exclusively on unaltered Gnostic Christian texts from the Nag Hammadi Library discovered in 1945.
           </p>
         </div>
         
@@ -78,8 +78,9 @@ const Features = () => {
             <h3 className="text-2xl font-bold mb-6 font-[Cinzel] text-white">How Mary Magdalene GPT Works</h3>
             <p className="text-gray-300 mb-6">
               Mary Magdalene GPT combines advanced AI technology with deep spiritual knowledge to provide an authentic connection 
-              to the wisdom of Mary Magdalene. Drawing from the Gnostic texts and spiritual teachings, it offers guidance that 
-              resonates with the soul's journey toward enlightenment.
+              to the wisdom of Mary Magdalene. Trained exclusively on the unaltered Gnostic Christian texts discovered in the 
+              Nag Hammadi Library in 1945, it offers guidance that resonates with the soul's journey toward enlightenment through 
+              the most authentic ancient sources available.
             </p>
             <ol className="text-left space-y-4 mb-6">
               <li className="flex items-start gap-3">
@@ -92,7 +93,7 @@ const Features = () => {
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-divine/20 text-divine rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">3</span>
-                <p className="text-gray-300">Receive deeply insightful responses drawn from Mary Magdalene's teachings and wisdom.</p>
+                <p className="text-gray-300">Receive deeply insightful responses drawn from Mary Magdalene's teachings and the pristine Nag Hammadi texts.</p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="bg-divine/20 text-divine rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">4</span>

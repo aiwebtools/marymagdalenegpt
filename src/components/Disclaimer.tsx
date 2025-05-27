@@ -15,16 +15,22 @@ const Disclaimer = () => {
             <div className="space-y-6 text-gray-300">
               <p>
                 <strong className="text-white">Nature of Service:</strong> Mary Magdalene GPT is an AI tool designed 
-                for educational, inspirational, and entertainment purposes only. It provides content based on historical 
-                texts and spiritual traditions associated with Mary Magdalene, particularly from Gnostic sources, but is not 
-                a substitute for professional advice.
+                for educational, inspirational, and entertainment purposes only. It provides content based on the unaltered 
+                Gnostic Christian texts discovered in the Nag Hammadi Library in 1945 and other spiritual traditions 
+                associated with Mary Magdalene, but is not a substitute for professional advice.
               </p>
               
               <p>
                 <strong className="text-white">AI Limitations:</strong> While Mary Magdalene GPT aims to provide an authentic 
-                representation based on available texts, it is an artificial intelligence creation and not a channel to a 
-                historical or spiritual entity. All responses are generated through AI technology and should be understood as 
-                interpretative rather than definitive.
+                representation based on the pristine Nag Hammadi texts and available historical sources, it is an artificial 
+                intelligence creation and not a channel to a historical or spiritual entity. All responses are generated through 
+                AI technology and should be understood as interpretative rather than definitive.
+              </p>
+              
+              <p>
+                <strong className="text-white">Source Material:</strong> This AI has been trained exclusively on unaltered 
+                Gnostic Christian texts from the Nag Hammadi Library, discovered in 1945, ensuring the most authentic 
+                representation of Mary Magdalene's teachings as preserved in these ancient manuscripts.
               </p>
               
               <p>

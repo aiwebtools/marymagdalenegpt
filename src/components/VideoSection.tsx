@@ -32,7 +32,7 @@ const VideoSection = () => {
   const [useYouTubeAPI, setUseYouTubeAPI] = useState(true); // Track which player to use
   const playerRef = useRef<any>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
-  const videoIdRef = useRef("23Bw0RcKT90");
+  const videoIdRef = useRef("7qxEnBR2BwQ");
   const apiLoadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -171,7 +171,7 @@ const VideoSection = () => {
             {/* Fallback for when JavaScript is disabled */}
             <noscript>
               <a 
-                href="https://www.youtube.com/watch?v=23Bw0RcKT90" 
+                href="https://www.youtube.com/watch?v=7qxEnBR2BwQ" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="absolute inset-0 flex items-center justify-center bg-black/70 text-white text-2xl"

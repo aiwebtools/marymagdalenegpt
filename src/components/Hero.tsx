@@ -10,12 +10,15 @@ const Hero = () => {
   const isMobile = useIsMobile();
 
   useEffect(() => {
+    console.log('Hero component mounted, isMobile:', isMobile);
+    
     const handleScroll = () => {
       if (heroRef.current) {
         const scrollPosition = window.scrollY;
         const heroHeight = heroRef.current.offsetHeight;
         // Adjust scroll fade effect for mobile
         const progress = Math.min(scrollPosition / (heroHeight * (isMobile ? 0.5 : 0.7)), 1);
+        console.log('Scroll progress:', progress, 'scrollPosition:', scrollPosition, 'heroHeight:', heroHeight);
         setScrollProgress(progress);
       }
     };
@@ -24,13 +27,18 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
 
+  const heroOpacity = 1 - scrollProgress * (isMobile ? 0.8 : 0.6);
+  const heroTransform = `translateY(${scrollProgress * (isMobile ? 30 : 50)}px)`;
+  
+  console.log('Hero render - opacity:', heroOpacity, 'transform:', heroTransform);
+
   return (
     <section 
       ref={heroRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"
       style={{
-        opacity: 1 - scrollProgress * (isMobile ? 0.8 : 0.6),
-        transform: `translateY(${scrollProgress * (isMobile ? 30 : 50)}px)`,
+        opacity: heroOpacity,
+        transform: heroTransform,
       }}
     >
       {/* Background Effects */}

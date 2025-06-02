@@ -70,9 +70,9 @@
   body {
     @apply text-foreground antialiased overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69, #1a0f2e, #0a0a14);
-    background-size: 400% 400%;
-    animation: divine-gradient 20s ease infinite;
+    background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69, #4a1458, #1a0f2e, #0a0a14);
+    background-size: 600% 600%;
+    animation: divine-gradient 15s ease infinite;
     position: relative;
   }
 
@@ -84,11 +84,12 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
-      conic-gradient(from 0deg at 50% 50%, transparent, rgba(255, 255, 255, 0.05), transparent);
-    animation: divine-shimmer 30s linear infinite;
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.2) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 60%),
+      radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.2) 0%, transparent 60%),
+      radial-gradient(circle at 60% 80%, rgba(217, 70, 239, 0.2) 0%, transparent 60%),
+      conic-gradient(from 0deg at 50% 50%, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: divine-shimmer 20s linear infinite;
     pointer-events: none;
     z-index: -1;
   }
@@ -101,54 +102,70 @@
     width: 100%;
     height: 100%;
     background-image: 
-      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(1px 1px at 40px 70px, rgba(255, 215, 0, 0.4), transparent),
-      radial-gradient(2px 2px at 90px 40px, rgba(138, 43, 226, 0.3), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(255, 105, 180, 0.3), transparent),
-      radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.2), transparent);
+      radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.6), transparent),
+      radial-gradient(3px 3px at 90px 40px, rgba(138, 43, 226, 0.5), transparent),
+      radial-gradient(2px 2px at 130px 80px, rgba(255, 105, 180, 0.5), transparent),
+      radial-gradient(3px 3px at 160px 30px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 200px 120px, rgba(217, 70, 239, 0.6), transparent);
     background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: divine-stars 50s linear infinite;
+    background-size: 300px 200px;
+    animation: divine-stars 40s linear infinite;
     pointer-events: none;
     z-index: -1;
   }
 
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-[Cinzel] tracking-wide;
+    @apply font-[Cinzel] tracking-wider;
+    letter-spacing: 0.05em;
   }
 
   /* Body text */
   p, li, a {
-    @apply font-[Cormorant_Garamond] text-lg;
+    @apply font-[Cormorant_Garamond] text-lg leading-relaxed;
   }
 
   /* Section styling */
   section {
-    @apply py-20 relative;
+    @apply py-32 relative;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    @apply backdrop-blur-2xl bg-white/10 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    border: 2px solid rgba(255, 215, 0, 0.3);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 20px rgba(155, 135, 245, 0.3);
+      0 15px 50px rgba(0, 0, 0, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3),
+      0 0 30px rgba(155, 135, 245, 0.4),
+      0 0 60px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: divine-sweep 3s infinite;
   }
   
   .divine-border {
-    @apply border border-divine/50 relative overflow-hidden;
-    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-    animation: divine-border-glow 3s ease-in-out infinite;
+    @apply border-2 border-divine/60 relative overflow-hidden;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    animation: divine-border-glow 2s ease-in-out infinite;
   }
   
   .divine-border::after {
     content: '';
-    @apply absolute inset-0 bg-divine/10 opacity-0 transition-opacity duration-300;
+    @apply absolute inset-0 bg-divine/20 opacity-0 transition-opacity duration-500;
   }
   
   .divine-border:hover::after {
@@ -158,51 +175,71 @@
   .glow-text {
     @apply text-white relative;
     text-shadow: 
-      0 0 5px theme('colors.divine.DEFAULT'), 
-      0 0 10px theme('colors.divine.glow'),
+      0 0 10px theme('colors.divine.DEFAULT'), 
       0 0 20px theme('colors.divine.glow'),
-      0 0 40px theme('colors.divine.glow');
-    animation: divine-text-glow 4s ease-in-out infinite alternate;
+      0 0 40px theme('colors.divine.glow'),
+      0 0 80px theme('colors.divine.glow');
+    animation: divine-text-glow 3s ease-in-out infinite alternate;
   }
   
   .shimmer-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-divine-light via-white to-divine-light animate-shimmer;
-    background-size: 200% 100%;
+    background-size: 300% 100%;
     background-image: linear-gradient(
       90deg,
       #FFD700 0%,
-      #FFFFFF 25%,
-      #FFD700 50%,
-      #FF69B4 75%,
-      #8A2BE2 100%
+      #FFFFFF 20%,
+      #FFD700 40%,
+      #FF69B4 60%,
+      #8A2BE2 80%,
+      #FFD700 100%
     );
   }
 
   .divine-btn {
-    @apply px-6 py-3 bg-divine rounded-md text-white font-medium relative overflow-hidden;
-    transition: all 0.3s ease;
-    background: linear-gradient(45deg, #9b87f5, #D946EF, #FFD700, #9b87f5);
-    background-size: 300% 300%;
-    animation: divine-button-gradient 4s ease infinite;
+    @apply px-8 py-5 bg-divine rounded-xl text-white font-medium relative overflow-hidden transform transition-all duration-500;
+    background: linear-gradient(45deg, #9b87f5, #D946EF, #FFD700, #FF69B4, #9b87f5);
+    background-size: 400% 400%;
+    animation: divine-button-gradient 3s ease infinite;
     box-shadow: 
-      0 0 20px rgba(155, 135, 245, 0.5),
-      0 0 40px rgba(217, 70, 239, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      0 0 30px rgba(155, 135, 245, 0.6),
+      0 0 60px rgba(217, 70, 239, 0.4),
+      0 0 90px rgba(255, 215, 0, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 215, 0, 0.5);
   }
   
   .divine-btn::before {
     content: '';
     @apply absolute inset-0 opacity-0;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));
-    transition: opacity 0.3s ease;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.4), rgba(255, 105, 180, 0.4));
+    transition: opacity 0.5s ease;
+  }
+
+  .divine-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
   }
   
   .divine-btn:hover {
-    transform: translateY(-2px) scale(1.05);
+    transform: translateY(-4px) scale(1.08);
     box-shadow: 
-      0 10px 30px rgba(155, 135, 245, 0.7),
-      0 0 60px rgba(217, 70, 239, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      0 20px 50px rgba(155, 135, 245, 0.8),
+      0 0 100px rgba(217, 70, 239, 0.6),
+      0 0 150px rgba(255, 215, 0, 0.5),
+      inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .divine-btn:hover::after {
+    width: 100%;
+    height: 100%;
   }
   
   .divine-btn:hover::before {
@@ -220,22 +257,35 @@
   .holy-aura::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
     background: conic-gradient(
       from 0deg,
       transparent,
-      rgba(255, 215, 0, 0.3),
-      rgba(255, 105, 180, 0.3),
-      rgba(138, 43, 226, 0.3),
+      rgba(255, 215, 0, 0.4),
+      rgba(255, 105, 180, 0.4),
+      rgba(138, 43, 226, 0.4),
+      rgba(217, 70, 239, 0.4),
       transparent
     );
-    animation: divine-rotation 8s linear infinite;
+    animation: divine-rotation 6s linear infinite;
     z-index: -1;
     border-radius: 50%;
-    filter: blur(10px);
+    filter: blur(20px);
+  }
+
+  .divine-spacing {
+    @apply space-y-12 md:space-y-20;
+  }
+
+  .divine-padding {
+    @apply px-8 py-12 md:px-16 md:py-20;
+  }
+
+  .divine-margin {
+    @apply mx-8 my-12 md:mx-16 md:my-20;
   }
 }
 
@@ -250,7 +300,7 @@
   }
 
   .perspective {
-    perspective: 1000px;
+    perspective: 1500px;
   }
   
   .preserve-3d {
@@ -260,66 +310,95 @@
 
 @keyframes divine-gradient {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
   100% { background-position: 0% 50%; }
 }
 
 @keyframes divine-shimmer {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(1); }
+  0% { transform: rotate(0deg) scale(1); opacity: 0.8; }
+  25% { transform: rotate(90deg) scale(1.1); opacity: 1; }
+  50% { transform: rotate(180deg) scale(1.2); opacity: 0.9; }
+  75% { transform: rotate(270deg) scale(1.1); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.8; }
 }
 
 @keyframes divine-stars {
-  0% { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-200px) translateY(-100px); }
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(-100px) translateY(-50px) rotate(90deg); }
+  50% { transform: translateX(-200px) translateY(-100px) rotate(180deg); }
+  75% { transform: translateX(-300px) translateY(-150px) rotate(270deg); }
+  100% { transform: translateX(-400px) translateY(-200px) rotate(360deg); }
 }
 
 @keyframes divine-text-glow {
   0% { 
-    text-shadow: 
-      0 0 5px theme('colors.divine.DEFAULT'), 
-      0 0 10px theme('colors.divine.glow'),
-      0 0 20px theme('colors.divine.glow'),
-      0 0 40px theme('colors.divine.glow');
-  }
-  100% { 
     text-shadow: 
       0 0 10px theme('colors.divine.DEFAULT'), 
       0 0 20px theme('colors.divine.glow'),
       0 0 40px theme('colors.divine.glow'),
       0 0 80px theme('colors.divine.glow');
   }
+  50% { 
+    text-shadow: 
+      0 0 20px theme('colors.divine.DEFAULT'), 
+      0 0 40px theme('colors.divine.glow'),
+      0 0 80px theme('colors.divine.glow'),
+      0 0 120px theme('colors.divine.glow'),
+      0 0 160px theme('colors.mystic.gold');
+  }
+  100% { 
+    text-shadow: 
+      0 0 15px theme('colors.divine.DEFAULT'), 
+      0 0 30px theme('colors.divine.glow'),
+      0 0 60px theme('colors.divine.glow'),
+      0 0 100px theme('colors.divine.glow');
+  }
 }
 
 @keyframes divine-button-gradient {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
   100% { background-position: 0% 50%; }
 }
 
 @keyframes divine-rotation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 @keyframes divine-border-glow {
   0%, 100% { 
-    box-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+    box-shadow: 0 0 20px rgba(155, 135, 245, 0.6);
+    border-color: rgba(255, 215, 0, 0.5);
   }
   50% { 
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(217, 70, 239, 0.6);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.9), 0 0 100px rgba(217, 70, 239, 0.7);
+    border-color: rgba(255, 215, 0, 0.9);
   }
+}
+
+@keyframes divine-sweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(2deg); }
+  75% { transform: translateY(-8px) rotate(-2deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
 @keyframes rotate-slow {
@@ -328,11 +407,11 @@
 }
 
 @keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes shimmer {
-  0% { background-position: -1000px 0; }
-  100% { background-position: 1000px 0; }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }

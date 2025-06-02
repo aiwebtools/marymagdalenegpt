@@ -1,4 +1,3 @@
-
 import { Eye } from "lucide-react";
 
 const Footer = () => {
@@ -13,12 +12,21 @@ const Footer = () => {
 
   const legalLinks = [
     { name: "Privacy Policy", href: "https://openai.com/policies/privacy-policy/" },
-    { name: "Terms of Service", href: "https://aiwebtools.ai/terms-of-services" }
+    { name: "Terms of Service", href: "https://aiwebtools.lovable.app/disclaimers" }
   ];
 
   return (
     <footer className="bg-black/70 backdrop-blur-md border-t border-divine/20 pt-16 pb-8">
       <div className="container mx-auto px-4">
+        {/* Educational Disclaimer Notice */}
+        <div className="mb-8 text-center">
+          <div className="inline-block px-4 py-2 bg-amber-900/20 rounded-lg border border-amber-500/30">
+            <p className="text-amber-100 text-sm font-[Cormorant_Garamond]">
+              <span className="font-semibold">Educational Notice:</span> This tool is for informational, educational, and research purposes only.
+            </p>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
             <a href="/" className="flex items-center gap-2 mb-6">

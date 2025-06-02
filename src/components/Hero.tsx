@@ -103,7 +103,7 @@ const Hero = () => {
               </span>
             </Button>
           </a>
-          <a href="#features" className="w-full sm:w-auto">
+          <a href="https://www.aiwebtools.ai" className="w-full sm:w-auto">
             <Button variant="outline" className="border-divine-celestial/80 text-divine-celestial hover:bg-divine-celestial/20 text-lg md:text-xl w-full sm:w-auto py-4 px-8 glass-card shadow-celestial animate-float">
               🔮 Discover Divine Wisdom 🔮
             </Button>

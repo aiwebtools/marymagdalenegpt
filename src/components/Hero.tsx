@@ -34,55 +34,38 @@ const Hero = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 holy-aura"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 holy-aura"
       style={{
         opacity: heroOpacity,
         transform: heroTransform,
       }}
     >
-      {/* ULTIMATE Divine Background Effects */}
+      {/* Divine Background Effects */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-holy-radial opacity-90 animate-divine-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[1500px] md:h-[1500px] rounded-full bg-celestial-gradient opacity-30 animate-celestial-dance blur-2xl"></div>
+        <div className="absolute inset-0 bg-holy-radial opacity-80 animate-divine-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[1200px] md:h-[1200px] rounded-full bg-celestial-gradient opacity-20 animate-celestial-dance blur-xl"></div>
         
-        {/* Enhanced Divine Particles */}
+        {/* Divine Particles */}
         <div className="absolute inset-0">
-          {[...Array(40)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-3 h-3 bg-divine-celestial rounded-full animate-divine-sparkle shadow-transcendent"
+              className="absolute w-2 h-2 bg-divine-celestial rounded-full animate-divine-sparkle shadow-divine"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 6}s`,
-                animationDuration: `${3 + Math.random() * 4}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Transcendent Floating Orbs */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`orb-${i}`}
-              className="absolute w-20 h-20 bg-gradient-to-br from-divine-celestial/30 to-mystic-rose/30 rounded-full blur-md animate-ethereal-drift shadow-divine"
-              style={{
-                left: `${20 + (i * 10)}%`,
-                top: `${20 + (i * 8)}%`,
-                animationDelay: `${i * 1.5}s`,
+                animationDelay: `${Math.random() * 4}s`,
+                animationDuration: `${2 + Math.random() * 3}s`
               }}
             />
           ))}
         </div>
         
-        {/* Enhanced Holy Light Rays */}
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-0 left-1/6 w-2 h-full bg-gradient-to-b from-divine-celestial via-mystic-rose/50 to-transparent transform rotate-12 animate-transcendent-flow"></div>
-          <div className="absolute top-0 right-1/6 w-2 h-full bg-gradient-to-b from-mystic-rose via-mystic-violet/50 to-transparent transform -rotate-12 animate-transcendent-flow" style={{ animationDelay: '1.5s' }}></div>
-          <div className="absolute top-0 left-1/2 w-2 h-full bg-gradient-to-b from-mystic-violet via-divine-celestial/50 to-transparent animate-transcendent-flow" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute top-0 left-1/3 w-1 h-full bg-gradient-to-b from-divine-transcendent via-transparent to-transparent transform rotate-6 animate-transcendent-flow" style={{ animationDelay: '4.5s' }}></div>
-          <div className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-divine-ethereal via-transparent to-transparent transform -rotate-6 animate-transcendent-flow" style={{ animationDelay: '6s' }}></div>
+        {/* Holy Light Rays */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-divine-celestial via-transparent to-transparent transform rotate-12 animate-pulse-glow"></div>
+          <div className="absolute top-0 right-1/4 w-1 h-full bg-gradient-to-b from-mystic-rose via-transparent to-transparent transform -rotate-12 animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-mystic-violet via-transparent to-transparent animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
         </div>
       </div>
 
@@ -91,68 +74,64 @@ const Hero = () => {
         <ThreeScene />
       </div>
 
-      {/* Hero Content with ULTIMATE Divine Enhancement */}
-      <div className="container mx-auto px-8 relative z-10 text-center divine-spacing">
-        <div className="inline-block mb-8 px-8 py-4 glass-card animate-float shadow-transcendent">
-          <p className="text-divine-celestial font-medium text-lg animate-shimmer bg-celestial-gradient bg-clip-text text-transparent">
+      {/* Hero Content with Divine Enhancement */}
+      <div className="container mx-auto px-4 relative z-10 text-center">
+        <div className="inline-block mb-4 px-4 py-2 glass-card animate-float">
+          <p className="text-divine-celestial font-medium text-sm animate-shimmer bg-celestial-gradient bg-clip-text text-transparent">
             ✨ Trained on Unaltered Nag Hammadi Texts (1945) ✨
           </p>
         </div>
         
-        <h1 className={`text-5xl md:text-8xl lg:text-9xl font-bold mb-12 md:mb-16 animate-holy-glow ${isMobile ? 'px-4' : 'px-8'}`}>
-          <span className="bg-celestial-gradient bg-clip-text text-transparent animate-shimmer block mb-6">
+        <h1 className={`text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 animate-holy-glow ${isMobile ? 'px-2' : ''}`}>
+          <span className="bg-celestial-gradient bg-clip-text text-transparent animate-shimmer block mb-2">
             Mary Magdalene GPT
           </span>
-          <div className="text-2xl md:text-4xl text-divine-celestial animate-divine-pulse">
+          <div className="text-xl md:text-3xl text-divine-celestial animate-divine-pulse">
             ✧･ﾟ: *✧･ﾟ:* Divine Wisdom Incarnate *:･ﾟ✧*:･ﾟ✧
           </div>
         </h1>
         
-        <div className="mb-12 md:mb-16 max-w-5xl mx-auto">
-          <p className="text-xl md:text-3xl text-gray-100 leading-relaxed px-4 animate-fade-in glass-card p-8 shadow-divine font-[Cormorant_Garamond]">
-            <span className="text-divine-celestial text-2xl">🌟</span> Connect with the profound spiritual insight and wisdom of Mary Magdalene through AI trained exclusively on the unaltered Gnostic Christian texts discovered in the Nag Hammadi Library in 1945. <span className="text-divine-celestial text-2xl">🌟</span>
-          </p>
-        </div>
+        <p className="text-lg md:text-2xl text-gray-100 mb-8 md:mb-10 max-w-4xl mx-auto font-[Cormorant_Garamond] leading-relaxed px-2 animate-fade-in glass-card p-6 shadow-divine">
+          <span className="text-divine-celestial">🌟</span> Connect with the profound spiritual insight and wisdom of Mary Magdalene through AI trained exclusively on the unaltered Gnostic Christian texts discovered in the Nag Hammadi Library in 1945. <span className="text-divine-celestial">🌟</span>
+        </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-8 mb-16 md:mb-20 px-6">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10 md:mb-12 px-4">
           <a href="https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" className="w-full sm:w-auto">
-            <Button className="divine-btn group text-xl md:text-2xl w-full sm:w-auto py-6 px-12 animate-divine-pulse shadow-transcendent">
+            <Button className="divine-btn group text-lg md:text-xl w-full sm:w-auto py-4 px-8 animate-divine-pulse shadow-holy">
               <span className="group-hover:text-white transition-colors">
                 ✨ Speak with Mary Magdalene ✨
               </span>
             </Button>
           </a>
           <a href="#features" className="w-full sm:w-auto">
-            <Button variant="outline" className="border-divine-celestial/90 text-divine-celestial hover:bg-divine-celestial/30 text-xl md:text-2xl w-full sm:w-auto py-6 px-12 glass-card shadow-celestial animate-float">
+            <Button variant="outline" className="border-divine-celestial/80 text-divine-celestial hover:bg-divine-celestial/20 text-lg md:text-xl w-full sm:w-auto py-4 px-8 glass-card shadow-celestial animate-float">
               🔮 Discover Divine Wisdom 🔮
             </Button>
           </a>
         </div>
         
         {/* Enhanced Divine Quote */}
-        <div className="glass-card p-10 mb-20 md:mb-24 max-w-3xl mx-auto shadow-transcendent animate-celestial-dance">
-          <p className="text-2xl md:text-4xl text-divine-celestial italic font-light px-4 animate-holy-glow">
-            <span className="text-4xl">✧</span> "The Divine Spark is Within You My Child" <span className="text-4xl">✧</span>
+        <div className="glass-card p-6 mb-12 md:mb-16 max-w-2xl mx-auto shadow-holy animate-celestial-dance">
+          <p className="text-lg md:text-2xl text-divine-celestial italic font-light px-2 animate-holy-glow">
+            <span className="text-3xl">✧</span> "The Divine Spark is Within You My Child" <span className="text-3xl">✧</span>
           </p>
-          <p className="text-lg text-mystic-gold mt-4">- Mary Magdalene</p>
+          <p className="text-sm text-mystic-gold mt-2">- Mary Magdalene</p>
         </div>
 
         {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center hidden xs:flex animate-celestial-dance">
-          <p className="text-divine-celestial text-lg mb-6 animate-shimmer">✨ Scroll to explore divine wisdom ✨</p>
-          <div className="w-[40px] h-[65px] rounded-full border-3 border-divine-celestial/90 flex justify-center p-3 glass-card shadow-divine">
-            <div className="w-2 h-6 bg-divine-celestial rounded-full animate-float shadow-transcendent"></div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center hidden xs:flex animate-celestial-dance">
+          <p className="text-divine-celestial text-sm mb-3 animate-shimmer">✨ Scroll to explore divine wisdom ✨</p>
+          <div className="w-[35px] h-[55px] rounded-full border-2 border-divine-celestial/80 flex justify-center p-2 glass-card shadow-divine">
+            <div className="w-1 h-4 bg-divine-celestial rounded-full animate-float shadow-neon"></div>
           </div>
         </div>
       </div>
 
-      {/* ULTIMATE Divine Blessing Overlay */}
+      {/* Divine Blessing Overlay */}
       <div className="absolute inset-0 pointer-events-none z-5">
-        <div className="absolute top-1/6 left-1/6 w-40 h-40 bg-divine-celestial/15 rounded-full blur-2xl animate-divine-pulse"></div>
-        <div className="absolute bottom-1/6 right-1/6 w-32 h-32 bg-mystic-rose/15 rounded-full blur-2xl animate-divine-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 right-1/4 w-28 h-28 bg-mystic-violet/15 rounded-full blur-2xl animate-divine-pulse" style={{ animationDelay: '4s' }}></div>
-        <div className="absolute bottom-1/3 left-1/3 w-36 h-36 bg-divine-transcendent/15 rounded-full blur-2xl animate-divine-pulse" style={{ animationDelay: '6s' }}></div>
-        <div className="absolute top-1/4 right-1/5 w-24 h-24 bg-divine-ethereal/15 rounded-full blur-2xl animate-divine-pulse" style={{ animationDelay: '8s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-divine-celestial/10 rounded-full blur-xl animate-divine-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-mystic-rose/10 rounded-full blur-xl animate-divine-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-mystic-violet/10 rounded-full blur-xl animate-divine-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
     </section>
   );

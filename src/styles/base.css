@@ -1,0 +1,158 @@
+
+@tailwind base;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 250 84% 54%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 275 80% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 250 84% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-divine/30 selection:text-white;
+  }
+  
+  html {
+    @apply scroll-smooth;
+    scroll-behavior: smooth;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  
+  body {
+    @apply text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69, #1a0f2e, #0a0a14);
+    background-size: 400% 400%;
+    animation: divine-gradient 20s ease infinite;
+    position: relative;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69);
+      background-size: 100% 100%;
+      animation: none;
+    }
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+      conic-gradient(from 0deg at 50% 50%, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: divine-shimmer 30s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    will-change: transform;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(255, 215, 0, 0.4), transparent),
+      radial-gradient(2px 2px at 90px 40px, rgba(138, 43, 226, 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255, 105, 180, 0.3), transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: divine-stars 50s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    will-change: transform;
+  }
+
+  @media (max-width: 768px) {
+    body::before {
+      animation: none;
+      background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+    }
+    
+    body::after {
+      animation: none;
+      background: none;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[Cinzel] tracking-wide;
+  }
+
+  p, li, a {
+    @apply font-[Cormorant_Garamond] text-lg;
+  }
+
+  section {
+    @apply py-20 relative;
+  }
+}

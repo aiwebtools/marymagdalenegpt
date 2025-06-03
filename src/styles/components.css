@@ -1,0 +1,147 @@
+
+@tailwind components;
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 20px rgba(155, 135, 245, 0.3);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  @media (max-width: 768px) {
+    .glass-card {
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .divine-border {
+    @apply border border-divine/50 relative overflow-hidden;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    animation: divine-border-glow 3s ease-in-out infinite;
+    transform: translateZ(0);
+  }
+  
+  .divine-border::after {
+    content: '';
+    @apply absolute inset-0 bg-divine/10 opacity-0 transition-opacity duration-300;
+  }
+  
+  .divine-border:hover::after {
+    @apply opacity-100;
+  }
+  
+  .glow-text {
+    @apply text-white relative;
+    text-shadow: 
+      0 0 5px theme('colors.divine.DEFAULT'), 
+      0 0 10px theme('colors.divine.glow'),
+      0 0 20px theme('colors.divine.glow'),
+      0 0 40px theme('colors.divine.glow');
+    animation: divine-text-glow 4s ease-in-out infinite alternate;
+    text-rendering: optimizeSpeed;
+  }
+  
+  .shimmer-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-divine-light via-white to-divine-light animate-shimmer;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      #FFD700 0%,
+      #FFFFFF 25%,
+      #FFD700 50%,
+      #FF69B4 75%,
+      #8A2BE2 100%
+    );
+  }
+
+  .divine-btn {
+    @apply px-6 py-3 bg-divine rounded-md text-white font-medium relative overflow-hidden;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #9b87f5, #D946EF, #FFD700, #9b87f5);
+    background-size: 300% 300%;
+    animation: divine-button-gradient 4s ease infinite;
+    box-shadow: 
+      0 0 20px rgba(155, 135, 245, 0.5),
+      0 0 40px rgba(217, 70, 239, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+  }
+  
+  @media (max-width: 768px) {
+    .divine-btn {
+      animation: none;
+      background: linear-gradient(45deg, #9b87f5, #D946EF);
+      box-shadow: 0 4px 12px rgba(155, 135, 245, 0.5);
+    }
+  }
+  
+  .divine-btn::before {
+    content: '';
+    @apply absolute inset-0 opacity-0;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));
+    transition: opacity 0.3s ease;
+  }
+  
+  .divine-btn:hover {
+    transform: translateY(-2px) scale(1.05) translateZ(0);
+    box-shadow: 
+      0 10px 30px rgba(155, 135, 245, 0.7),
+      0 0 60px rgba(217, 70, 239, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    .divine-btn:hover {
+      transform: translateY(-1px) translateZ(0);
+      box-shadow: 0 6px 20px rgba(155, 135, 245, 0.7);
+    }
+  }
+  
+  .divine-btn:hover::before {
+    @apply opacity-100;
+  }
+  
+  .divine-btn span {
+    @apply relative z-10;
+  }
+
+  .holy-aura {
+    position: relative;
+  }
+
+  .holy-aura::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255, 215, 0, 0.3),
+      rgba(255, 105, 180, 0.3),
+      rgba(138, 43, 226, 0.3),
+      transparent
+    );
+    animation: divine-rotation 8s linear infinite;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(10px);
+    will-change: transform;
+  }
+
+  @media (max-width: 768px) {
+    .holy-aura::before {
+      display: none;
+    }
+  }
+}

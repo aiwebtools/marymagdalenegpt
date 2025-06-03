@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
@@ -35,11 +34,18 @@ const Hero = () => {
     <section 
       ref={heroRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20 holy-aura"
+      itemScope 
+      itemType="https://schema.org/Product"
       style={{
         opacity: heroOpacity,
         transform: heroTransform,
       }}
     >
+      {/* SEO-optimized structured data */}
+      <meta itemProp="name" content="Mary Magdalene GPT - AI Spiritual Guide" />
+      <meta itemProp="description" content="Connect with divine wisdom through AI trained on Gnostic Christian texts from the Nag Hammadi Library" />
+      <meta itemProp="category" content="AI Tools" />
+      
       {/* Divine Background Effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-holy-radial opacity-80 animate-divine-pulse"></div>
@@ -74,7 +80,7 @@ const Hero = () => {
         <ThreeScene />
       </div>
 
-      {/* Hero Content with Divine Enhancement */}
+      {/* Hero Content with Enhanced SEO */}
       <div className="container mx-auto px-4 relative z-10 text-center">
         <div className="inline-block mb-4 px-4 py-2 glass-card animate-float">
           <p className="text-divine-celestial font-medium text-sm animate-shimmer bg-celestial-gradient bg-clip-text text-transparent">
@@ -82,40 +88,42 @@ const Hero = () => {
           </p>
         </div>
         
-        <h1 className={`text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 animate-holy-glow ${isMobile ? 'px-2' : ''}`}>
+        {/* SEO-optimized headings */}
+        <h1 className={`text-4xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 animate-holy-glow ${isMobile ? 'px-2' : ''}`} itemProp="name">
           <span className="bg-celestial-gradient bg-clip-text text-transparent animate-shimmer block mb-2">
             Mary Magdalene GPT
           </span>
-          <div className="text-xl md:text-3xl text-divine-celestial animate-divine-pulse">
+          <h2 className="text-xl md:text-3xl text-divine-celestial animate-divine-pulse">
             ✧･ﾟ: *✧･ﾟ:* Divine Wisdom Incarnate *:･ﾟ✧*:･ﾟ✧
-          </div>
+          </h2>
         </h1>
         
-        <p className="text-lg md:text-2xl text-gray-100 mb-8 md:mb-10 max-w-4xl mx-auto font-[Cormorant_Garamond] leading-relaxed px-2 animate-fade-in glass-card p-6 shadow-divine">
+        <p className="text-lg md:text-2xl text-gray-100 mb-8 md:mb-10 max-w-4xl mx-auto font-[Cormorant_Garamond] leading-relaxed px-2 animate-fade-in glass-card p-6 shadow-divine" itemProp="description">
           <span className="text-divine-celestial">🌟</span> Connect with the profound spiritual insight and wisdom of Mary Magdalene through AI trained exclusively on the unaltered Gnostic Christian texts discovered in the Nag Hammadi Library in 1945. <span className="text-divine-celestial">🌟</span>
         </p>
         
+        {/* SEO-optimized call-to-action buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10 md:mb-12 px-4">
-          <a href="https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" className="w-full sm:w-auto">
-            <Button className="divine-btn group text-lg md:text-xl w-full sm:w-auto py-4 px-8 animate-divine-pulse shadow-holy">
+          <a href="https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" className="w-full sm:w-auto" title="Talk to Mary Magdalene GPT - Free AI Spiritual Guide" rel="noopener">
+            <Button className="divine-btn group text-lg md:text-xl w-full sm:w-auto py-4 px-8 animate-divine-pulse shadow-holy" itemProp="url">
               <span className="group-hover:text-white transition-colors">
                 ✨ Speak with Mary Magdalene ✨
               </span>
             </Button>
           </a>
-          <a href="https://www.aiwebtools.ai" className="w-full sm:w-auto">
+          <a href="https://www.aiwebtools.ai" className="w-full sm:w-auto" title="Discover More Free AI Tools - AI Web Tools Directory" rel="noopener">
             <Button variant="outline" className="border-divine-celestial/80 text-divine-celestial hover:bg-divine-celestial/20 text-lg md:text-xl w-full sm:w-auto py-4 px-8 glass-card shadow-celestial animate-float">
-              🔮 Discover Divine Wisdom 🔮
+              🔮 Discover Free AI Tools 🔮
             </Button>
           </a>
         </div>
         
-        {/* Enhanced Divine Quote */}
-        <div className="glass-card p-6 mb-12 md:mb-16 max-w-2xl mx-auto shadow-holy animate-celestial-dance">
-          <p className="text-lg md:text-2xl text-divine-celestial italic font-light px-2 animate-holy-glow">
+        {/* Enhanced Divine Quote with structured data */}
+        <div className="glass-card p-6 mb-12 md:mb-16 max-w-2xl mx-auto shadow-holy animate-celestial-dance" itemScope itemType="https://schema.org/Quotation">
+          <p className="text-lg md:text-2xl text-divine-celestial italic font-light px-2 animate-holy-glow" itemProp="text">
             <span className="text-3xl">✧</span> "The Divine Spark is Within You My Child" <span className="text-3xl">✧</span>
           </p>
-          <p className="text-sm text-mystic-gold mt-2">- Mary Magdalene</p>
+          <p className="text-sm text-mystic-gold mt-2" itemProp="author">- Mary Magdalene</p>
         </div>
 
         {/* Enhanced Scroll Indicator */}

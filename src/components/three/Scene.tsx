@@ -30,10 +30,13 @@ const Scene = () => {
       ref={canvasRef}
       camera={{ position: [0, 0, isMobile ? 12 : 10], fov: isMobile ? 70 : 60 }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
-      dpr={[1, isMobile ? 1.5 : 2]}
+      dpr={[1, isMobile ? 1 : 2]}
       performance={{ min: 0.5 }}
+      frameloop="demand"
       onCreated={(state) => {
         console.log('Three.js Canvas created successfully');
+        // Lower pixel ratio for better performance
+        state.gl.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
         // Ensure proper disposal on context loss
         state.gl.domElement.addEventListener('webglcontextlost', (e) => {
           console.log('WebGL context lost, preventing default');
@@ -44,9 +47,9 @@ const Scene = () => {
         console.error('Three.js Canvas error:', error);
       }}
     >
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[10, 10, 5]} intensity={1} />
-      <pointLight position={[-10, -10, -5]} color="#D946EF" intensity={0.5} />
+      <ambientLight intensity={isMobile ? 0.5 : 0.3} />
+      <directionalLight position={[10, 10, 5]} intensity={isMobile ? 0.8 : 1} />
+      <pointLight position={[-10, -10, -5]} color="#D946EF" intensity={isMobile ? 0.3 : 0.5} />
       
       <BasicSphere />
       {!isMobile && <FloatingRing />}

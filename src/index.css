@@ -60,7 +60,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-divine/30 selection:text-white;
+    @apply border-border selection:bg-purple-500/30 selection:text-white;
   }
   
   html {
@@ -152,7 +152,7 @@
   }
   
   .divine-border {
-    @apply border border-divine/50 relative overflow-hidden;
+    @apply border border-purple-500/50 relative overflow-hidden;
     background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
   }
 
@@ -163,7 +163,7 @@
     
     .divine-border::after {
       content: '';
-      @apply absolute inset-0 bg-divine/10 opacity-0 transition-opacity duration-300;
+      @apply absolute inset-0 bg-purple-500/10 opacity-0 transition-opacity duration-300;
     }
     
     .divine-border:hover::after {
@@ -174,10 +174,10 @@
   .glow-text {
     @apply text-white relative;
     text-shadow: 
-      0 0 5px theme('colors.divine.DEFAULT'), 
-      0 0 10px theme('colors.divine.glow'),
-      0 0 20px theme('colors.divine.glow'),
-      0 0 40px theme('colors.divine.glow');
+      0 0 5px #9b87f5, 
+      0 0 10px #9b87f5,
+      0 0 20px #9b87f5,
+      0 0 40px #9b87f5;
   }
 
   @media (min-width: 768px) {
@@ -187,7 +187,7 @@
   }
   
   .shimmer-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-divine-light via-white to-divine-light;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-300 via-white to-purple-300;
     background-size: 200% 100%;
     background-image: linear-gradient(
       90deg,
@@ -206,7 +206,7 @@
   }
 
   .divine-btn {
-    @apply px-6 py-3 bg-divine rounded-md text-white font-medium relative overflow-hidden;
+    @apply px-6 py-3 bg-purple-600 rounded-md text-white font-medium relative overflow-hidden;
     transition: all 0.3s ease;
     background: linear-gradient(45deg, #9b87f5, #D946EF, #FFD700, #9b87f5);
     background-size: 300% 300%;
@@ -325,17 +325,17 @@
   @keyframes divine-text-glow {
     0% { 
       text-shadow: 
-        0 0 5px theme('colors.divine.DEFAULT'), 
-        0 0 10px theme('colors.divine.glow'),
-        0 0 20px theme('colors.divine.glow'),
-        0 0 40px theme('colors.divine.glow');
+        0 0 5px #9b87f5, 
+        0 0 10px #9b87f5,
+        0 0 20px #9b87f5,
+        0 0 40px #9b87f5;
     }
     100% { 
       text-shadow: 
-        0 0 10px theme('colors.divine.DEFAULT'), 
-        0 0 20px theme('colors.divine.glow'),
-        0 0 40px theme('colors.divine.glow'),
-        0 0 80px theme('colors.divine.glow');
+        0 0 10px #9b87f5, 
+        0 0 20px #9b87f5,
+        0 0 40px #9b87f5,
+        0 0 80px #9b87f5;
     }
   }
 
@@ -386,12 +386,12 @@
 
   @keyframes divine-pulse {
     0%, 100% { 
-      transform: 'scale(1)',
-      filter: 'brightness(1) hue-rotate(0deg)'
+      transform: scale(1);
+      filter: brightness(1) hue-rotate(0deg);
     }
     50% { 
-      transform: 'scale(1.05)',
-      filter: 'brightness(1.2) hue-rotate(10deg)'
+      transform: scale(1.05);
+      filter: brightness(1.2) hue-rotate(10deg);
     }
   }
 

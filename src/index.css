@@ -65,6 +65,14 @@
   
   html {
     @apply scroll-smooth;
+    /* Disable smooth scroll on mobile for better performance */
+    scroll-behavior: smooth;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   
   body {
@@ -74,9 +82,20 @@
     background-size: 400% 400%;
     animation: divine-gradient 20s ease infinite;
     position: relative;
-    /* Optimize rendering */
     transform: translateZ(0);
     backface-visibility: hidden;
+    /* Disable animations on mobile for better performance */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Simplified mobile background */
+  @media (max-width: 768px) {
+    body {
+      background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69);
+      background-size: 100% 100%;
+      animation: none;
+    }
   }
 
   body::before {
@@ -94,7 +113,6 @@
     animation: divine-shimmer 30s linear infinite;
     pointer-events: none;
     z-index: -1;
-    /* Optimize for mobile */
     will-change: transform;
   }
 
@@ -116,18 +134,19 @@
     animation: divine-stars 50s linear infinite;
     pointer-events: none;
     z-index: -1;
-    /* Reduce animation complexity on mobile */
     will-change: transform;
   }
 
-  /* Reduce motion for mobile performance */
+  /* Disable complex animations on mobile */
   @media (max-width: 768px) {
     body::before {
-      animation: divine-shimmer 60s linear infinite;
+      animation: none;
+      background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
     }
     
     body::after {
-      animation: divine-stars 100s linear infinite;
+      animation: none;
+      background: none;
     }
   }
 
@@ -156,9 +175,16 @@
       0 8px 32px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2),
       0 0 20px rgba(155, 135, 245, 0.3);
-    /* Optimize for hardware acceleration */
     transform: translateZ(0);
     will-change: transform;
+  }
+  
+  /* Simplified glass card on mobile */
+  @media (max-width: 768px) {
+    .glass-card {
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
   }
   
   .divine-border {
@@ -185,7 +211,6 @@
       0 0 20px theme('colors.divine.glow'),
       0 0 40px theme('colors.divine.glow');
     animation: divine-text-glow 4s ease-in-out infinite alternate;
-    /* Optimize text rendering */
     text-rendering: optimizeSpeed;
   }
   
@@ -212,9 +237,17 @@
       0 0 20px rgba(155, 135, 245, 0.5),
       0 0 40px rgba(217, 70, 239, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    /* Optimize for hardware acceleration */
     transform: translateZ(0);
     will-change: transform, box-shadow;
+  }
+  
+  /* Simplified button on mobile */
+  @media (max-width: 768px) {
+    .divine-btn {
+      animation: none;
+      background: linear-gradient(45deg, #9b87f5, #D946EF);
+      box-shadow: 0 4px 12px rgba(155, 135, 245, 0.5);
+    }
   }
   
   .divine-btn::before {
@@ -230,6 +263,14 @@
       0 10px 30px rgba(155, 135, 245, 0.7),
       0 0 60px rgba(217, 70, 239, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Simplified hover on mobile */
+  @media (max-width: 768px) {
+    .divine-btn:hover {
+      transform: translateY(-1px) translateZ(0);
+      box-shadow: 0 6px 20px rgba(155, 135, 245, 0.7);
+    }
   }
   
   .divine-btn:hover::before {
@@ -266,18 +307,10 @@
     will-change: transform;
   }
 
-  /* Optimize animations for mobile */
+  /* Disable complex effects on mobile */
   @media (max-width: 768px) {
     .holy-aura::before {
-      animation: divine-rotation 16s linear infinite;
-    }
-    
-    .divine-btn {
-      animation: divine-button-gradient 8s ease infinite;
-    }
-    
-    .glow-text {
-      animation: divine-text-glow 8s ease-in-out infinite alternate;
+      display: none;
     }
   }
 }
@@ -301,7 +334,7 @@
   }
 }
 
-/* Optimized keyframes with better performance */
+/* Optimized keyframes - disable complex animations on mobile */
 @keyframes divine-gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -381,9 +414,27 @@
   100% { background-position: 1000px 0; }
 }
 
-/* Reduce motion preference support */
+/* Disable animations on mobile devices for better performance */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Allow only essential animations */
+  .divine-btn, .glass-card {
+    animation: none !important;
+  }
+  
+  .divine-btn:hover {
+    animation: none !important;
+  }
+}
+
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

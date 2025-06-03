@@ -19,17 +19,17 @@
 @keyframes divine-text-glow {
   0% { 
     text-shadow: 
-      0 0 5px theme('colors.divine.DEFAULT'), 
-      0 0 10px theme('colors.divine.glow'),
-      0 0 20px theme('colors.divine.glow'),
-      0 0 40px theme('colors.divine.glow');
+      0 0 5px #9b87f5, 
+      0 0 10px #FFD700,
+      0 0 20px #FFD700,
+      0 0 40px #FFD700;
   }
   100% { 
     text-shadow: 
-      0 0 10px theme('colors.divine.DEFAULT'), 
-      0 0 20px theme('colors.divine.glow'),
-      0 0 40px theme('colors.divine.glow'),
-      0 0 80px theme('colors.divine.glow');
+      0 0 10px #9b87f5, 
+      0 0 20px #FFD700,
+      0 0 40px #FFD700,
+      0 0 80px #FFD700;
   }
 }
 

@@ -5,34 +5,24 @@
   :root {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-
     --primary: 250 84% 54%;
     --primary-foreground: 0 0% 98%;
-
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-
     --accent: 275 80% 60%;
     --accent-foreground: 0 0% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
-
     --radius: 0.75rem;
-
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 250 84% 54%;
@@ -41,6 +31,18 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Custom color variables for the divine theme */
+  :root {
+    --divine: #9b87f5;
+    --divine-glow: #FFD700;
+    --divine-light: #D946EF;
+    --divine-celestial: #FFD700;
+    --divine-dark: #1a0f2e;
+    --mystic-rose: #FF69B4;
+    --mystic-violet: #8A2BE2;
+    --mystic-gold: #FFD700;
   }
 }
 
@@ -58,7 +60,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-divine/30 selection:text-white;
+    @apply border-border selection:bg-purple-500/30 selection:text-white;
   }
   
   html {

@@ -1,18 +1,11 @@
 
 import { Suspense, useEffect, useState } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 import Scene from './three/Scene';
 
 const ThreeScene = () => {
   const [hasError, setHasError] = useState(false);
-  const isMobile = useIsMobile();
   
   console.log('ThreeScene component rendering');
-  
-  // Don't render on mobile to prevent glitches
-  if (isMobile) {
-    return null;
-  }
   
   // Reset error state when component mounts
   useEffect(() => {
@@ -21,7 +14,32 @@ const ThreeScene = () => {
   
   // Error boundary fallback
   if (hasError) {
-    return null; // Silently fail on mobile
+    return (
+      <div style={{ 
+        position: 'absolute', 
+        top: '50%', 
+        left: '50%', 
+        transform: 'translate(-50%, -50%)',
+        color: 'white',
+        textAlign: 'center'
+      }}>
+        <div>3D scene temporarily unavailable</div>
+        <button 
+          onClick={() => setHasError(false)}
+          style={{ 
+            marginTop: '10px', 
+            padding: '5px 10px', 
+            background: '#333', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Retry
+        </button>
+      </div>
+    );
   }
   
   return (
@@ -34,7 +52,17 @@ const ThreeScene = () => {
       zIndex: 0,
       overflow: 'hidden'
     }}>
-      <Suspense fallback={null}>
+      <Suspense fallback={
+        <div style={{ 
+          position: 'absolute', 
+          top: '50%', 
+          left: '50%', 
+          transform: 'translate(-50%, -50%)',
+          color: 'white'
+        }}>
+          Loading 3D scene...
+        </div>
+      }>
         <ErrorBoundary onError={() => setHasError(true)}>
           <Scene />
         </ErrorBoundary>

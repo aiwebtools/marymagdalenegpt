@@ -1,5 +1,338 @@
 
-@import './styles/base.css';
-@import './styles/components.css';
-@import './styles/animations.css';
-@import './styles/utilities.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 250 84% 54%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 275 80% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 250 84% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-divine/30 selection:text-white;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: linear-gradient(45deg, #0a0a14, #1a0f2e, #2d1b69, #1a0f2e, #0a0a14);
+    background-size: 400% 400%;
+    animation: divine-gradient 20s ease infinite;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+      conic-gradient(from 0deg at 50% 50%, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: divine-shimmer 30s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(1px 1px at 40px 70px, rgba(255, 215, 0, 0.4), transparent),
+      radial-gradient(2px 2px at 90px 40px, rgba(138, 43, 226, 0.3), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255, 105, 180, 0.3), transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: divine-stars 50s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[Cinzel] tracking-wide;
+  }
+
+  /* Body text */
+  p, li, a {
+    @apply font-[Cormorant_Garamond] text-lg;
+  }
+
+  /* Section styling */
+  section {
+    @apply py-20 relative;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 20px rgba(155, 135, 245, 0.3);
+  }
+  
+  .divine-border {
+    @apply border border-divine/50 relative overflow-hidden;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    animation: divine-border-glow 3s ease-in-out infinite;
+  }
+  
+  .divine-border::after {
+    content: '';
+    @apply absolute inset-0 bg-divine/10 opacity-0 transition-opacity duration-300;
+  }
+  
+  .divine-border:hover::after {
+    @apply opacity-100;
+  }
+  
+  .glow-text {
+    @apply text-white relative;
+    text-shadow: 
+      0 0 5px theme('colors.divine.DEFAULT'), 
+      0 0 10px theme('colors.divine.glow'),
+      0 0 20px theme('colors.divine.glow'),
+      0 0 40px theme('colors.divine.glow');
+    animation: divine-text-glow 4s ease-in-out infinite alternate;
+  }
+  
+  .shimmer-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-divine-light via-white to-divine-light animate-shimmer;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      #FFD700 0%,
+      #FFFFFF 25%,
+      #FFD700 50%,
+      #FF69B4 75%,
+      #8A2BE2 100%
+    );
+  }
+
+  .divine-btn {
+    @apply px-6 py-3 bg-divine rounded-md text-white font-medium relative overflow-hidden;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #9b87f5, #D946EF, #FFD700, #9b87f5);
+    background-size: 300% 300%;
+    animation: divine-button-gradient 4s ease infinite;
+    box-shadow: 
+      0 0 20px rgba(155, 135, 245, 0.5),
+      0 0 40px rgba(217, 70, 239, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .divine-btn::before {
+    content: '';
+    @apply absolute inset-0 opacity-0;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));
+    transition: opacity 0.3s ease;
+  }
+  
+  .divine-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+      0 10px 30px rgba(155, 135, 245, 0.7),
+      0 0 60px rgba(217, 70, 239, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  .divine-btn:hover::before {
+    @apply opacity-100;
+  }
+  
+  .divine-btn span {
+    @apply relative z-10;
+  }
+
+  .holy-aura {
+    position: relative;
+  }
+
+  .holy-aura::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255, 215, 0, 0.3),
+      rgba(255, 105, 180, 0.3),
+      rgba(138, 43, 226, 0.3),
+      transparent
+    );
+    animation: divine-rotation 8s linear infinite;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(10px);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+@keyframes divine-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes divine-shimmer {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes divine-stars {
+  0% { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-200px) translateY(-100px); }
+}
+
+@keyframes divine-text-glow {
+  0% { 
+    text-shadow: 
+      0 0 5px theme('colors.divine.DEFAULT'), 
+      0 0 10px theme('colors.divine.glow'),
+      0 0 20px theme('colors.divine.glow'),
+      0 0 40px theme('colors.divine.glow');
+  }
+  100% { 
+    text-shadow: 
+      0 0 10px theme('colors.divine.DEFAULT'), 
+      0 0 20px theme('colors.divine.glow'),
+      0 0 40px theme('colors.divine.glow'),
+      0 0 80px theme('colors.divine.glow');
+  }
+}
+
+@keyframes divine-button-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes divine-rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes divine-border-glow {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(217, 70, 239, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}

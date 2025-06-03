@@ -10,10 +10,7 @@ const Scene = () => {
   const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
-  // Don't render Three.js scene on mobile to prevent glitches
-  if (isMobile) {
-    return null;
-  }
+  console.log('Scene component rendering, isMobile:', isMobile);
   
   // Cleanup Three.js context on unmount
   useEffect(() => {
@@ -31,18 +28,15 @@ const Scene = () => {
   return (
     <Canvas 
       ref={canvasRef}
-      camera={{ position: [0, 0, 10], fov: 60 }}
+      camera={{ position: [0, 0, isMobile ? 12 : 10], fov: isMobile ? 70 : 60 }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
-      dpr={[1, 1.5]}
+      dpr={[1, isMobile ? 1.5 : 2]}
       performance={{ min: 0.5 }}
-      frameloop="demand"
       onCreated={(state) => {
-        // Optimize renderer settings for performance
-        state.gl.setClearColor('#000000', 0);
-        state.gl.shadowMap.enabled = false;
-        
+        console.log('Three.js Canvas created successfully');
         // Ensure proper disposal on context loss
         state.gl.domElement.addEventListener('webglcontextlost', (e) => {
+          console.log('WebGL context lost, preventing default');
           e.preventDefault();
         });
       }}
@@ -51,11 +45,11 @@ const Scene = () => {
       }}
     >
       <ambientLight intensity={0.3} />
-      <directionalLight position={[10, 10, 5]} intensity={1} castShadow={false} />
+      <directionalLight position={[10, 10, 5]} intensity={1} />
       <pointLight position={[-10, -10, -5]} color="#D946EF" intensity={0.5} />
       
       <BasicSphere />
-      <FloatingRing />
+      {!isMobile && <FloatingRing />}
       
       <OrbitControls 
         enableZoom={false} 

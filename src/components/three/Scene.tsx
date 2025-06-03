@@ -10,8 +10,6 @@ const Scene = () => {
   const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
-  console.log('Scene component rendering, isMobile:', isMobile);
-  
   // Cleanup Three.js context on unmount
   useEffect(() => {
     return () => {
@@ -30,13 +28,16 @@ const Scene = () => {
       ref={canvasRef}
       camera={{ position: [0, 0, isMobile ? 12 : 10], fov: isMobile ? 70 : 60 }}
       style={{ width: '100%', height: '100%', background: 'transparent' }}
-      dpr={[1, isMobile ? 1.5 : 2]}
+      dpr={[1, isMobile ? 1 : 1.5]} // Reduced for better performance
       performance={{ min: 0.5 }}
+      frameloop="demand" // Only render when needed
       onCreated={(state) => {
-        console.log('Three.js Canvas created successfully');
+        // Optimize renderer settings for performance
+        state.gl.setClearColor('#000000', 0);
+        state.gl.shadowMap.enabled = false; // Disable shadows for performance
+        
         // Ensure proper disposal on context loss
         state.gl.domElement.addEventListener('webglcontextlost', (e) => {
-          console.log('WebGL context lost, preventing default');
           e.preventDefault();
         });
       }}
@@ -45,7 +46,7 @@ const Scene = () => {
       }}
     >
       <ambientLight intensity={0.3} />
-      <directionalLight position={[10, 10, 5]} intensity={1} />
+      <directionalLight position={[10, 10, 5]} intensity={1} castShadow={false} />
       <pointLight position={[-10, -10, -5]} color="#D946EF" intensity={0.5} />
       
       <BasicSphere />

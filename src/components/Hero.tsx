@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
+
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
 import ThreeScene from './ThreeScene';
@@ -8,27 +9,35 @@ const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const isMobile = useIsMobile();
 
+  // Throttle scroll events for better performance
+  const handleScroll = useCallback(() => {
+    if (heroRef.current) {
+      const scrollPosition = window.scrollY;
+      const heroHeight = heroRef.current.offsetHeight;
+      const progress = Math.min(scrollPosition / (heroHeight * (isMobile ? 0.5 : 0.7)), 1);
+      setScrollProgress(progress);
+    }
+  }, [isMobile]);
+
   useEffect(() => {
-    console.log('Hero component mounted, isMobile:', isMobile);
-    
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrollPosition = window.scrollY;
-        const heroHeight = heroRef.current.offsetHeight;
-        const progress = Math.min(scrollPosition / (heroHeight * (isMobile ? 0.5 : 0.7)), 1);
-        console.log('Scroll progress:', progress, 'scrollPosition:', scrollPosition, 'heroHeight:', heroHeight);
-        setScrollProgress(progress);
+    // Throttle scroll events to improve performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [handleScroll]);
 
   const heroOpacity = 1 - scrollProgress * (isMobile ? 0.8 : 0.6);
   const heroTransform = `translateY(${scrollProgress * (isMobile ? 30 : 50)}px)`;
-  
-  console.log('Hero render - opacity:', heroOpacity, 'transform:', heroTransform);
 
   return (
     <section 
@@ -39,6 +48,7 @@ const Hero = () => {
       style={{
         opacity: heroOpacity,
         transform: heroTransform,
+        willChange: 'opacity, transform'
       }}
     >
       {/* SEO-optimized structured data */}
@@ -46,14 +56,14 @@ const Hero = () => {
       <meta itemProp="description" content="Connect with divine wisdom through AI trained on Gnostic Christian texts from the Nag Hammadi Library" />
       <meta itemProp="category" content="AI Tools" />
       
-      {/* Divine Background Effects */}
+      {/* Divine Background Effects - Optimized */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-holy-radial opacity-80 animate-divine-pulse"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[1200px] md:h-[1200px] rounded-full bg-celestial-gradient opacity-20 animate-celestial-dance blur-xl"></div>
         
-        {/* Divine Particles */}
+        {/* Reduced Divine Particles for better performance */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(isMobile ? 10 : 15)].map((_, i) => (
             <div
               key={i}
               className="absolute w-2 h-2 bg-divine-celestial rounded-full animate-divine-sparkle shadow-divine"
@@ -67,18 +77,22 @@ const Hero = () => {
           ))}
         </div>
         
-        {/* Holy Light Rays */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-divine-celestial via-transparent to-transparent transform rotate-12 animate-pulse-glow"></div>
-          <div className="absolute top-0 right-1/4 w-1 h-full bg-gradient-to-b from-mystic-rose via-transparent to-transparent transform -rotate-12 animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-mystic-violet via-transparent to-transparent animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
-        </div>
+        {/* Holy Light Rays - Simplified for mobile */}
+        {!isMobile && (
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-divine-celestial via-transparent to-transparent transform rotate-12 animate-pulse-glow"></div>
+            <div className="absolute top-0 right-1/4 w-1 h-full bg-gradient-to-b from-mystic-rose via-transparent to-transparent transform -rotate-12 animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-mystic-violet via-transparent to-transparent animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
+          </div>
+        )}
       </div>
 
-      {/* Enhanced 3D Scene */}
-      <div className="absolute inset-0 z-0">
-        <ThreeScene />
-      </div>
+      {/* Enhanced 3D Scene - Only on desktop for performance */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-0">
+          <ThreeScene />
+        </div>
+      )}
 
       {/* Hero Content with Enhanced SEO */}
       <div className="container mx-auto px-4 relative z-10 text-center">
@@ -135,7 +149,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Divine Blessing Overlay */}
+      {/* Divine Blessing Overlay - Simplified for performance */}
       <div className="absolute inset-0 pointer-events-none z-5">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-divine-celestial/10 rounded-full blur-xl animate-divine-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-mystic-rose/10 rounded-full blur-xl animate-divine-pulse" style={{ animationDelay: '2s' }}></div>

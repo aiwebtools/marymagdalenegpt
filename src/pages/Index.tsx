@@ -57,43 +57,52 @@ const Index = () => {
       document.head.appendChild(hreflang);
     }
     
-    // Add Google Fonts with preload for performance
+    // Optimize font loading with preload for performance
     const linkCinzel = document.createElement("link");
-    linkCinzel.rel = "preload";
-    linkCinzel.as = "style";
-    linkCinzel.href = "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap";
+    linkCinzel.setAttribute("rel", "preload");
+    linkCinzel.setAttribute("as", "style");
+    linkCinzel.setAttribute("href", "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
     linkCinzel.onload = function() {
-      this.onload = null;
-      this.rel = 'stylesheet';
+      const styleLink = this as HTMLLinkElement;
+      styleLink.onload = null;
+      styleLink.setAttribute('rel', 'stylesheet');
     };
     document.head.appendChild(linkCinzel);
     
     const linkCormorant = document.createElement("link");
-    linkCormorant.rel = "preload";
-    linkCormorant.as = "style";
-    linkCormorant.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap";
+    linkCormorant.setAttribute("rel", "preload");
+    linkCormorant.setAttribute("as", "style");
+    linkCormorant.setAttribute("href", "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
     linkCormorant.onload = function() {
-      this.onload = null;
-      this.rel = 'stylesheet';
+      const styleLink = this as HTMLLinkElement;
+      styleLink.onload = null;
+      styleLink.setAttribute('rel', 'stylesheet');
     };
     document.head.appendChild(linkCormorant);
     
-    // Enhanced smooth scroll for anchor links with SEO-friendly URLs
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId && targetId !== '#') {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Update URL for SEO without triggering page reload
-            history.pushState(null, '', targetId);
-            targetElement.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
+    // Optimize smooth scroll for anchor links with SEO-friendly URLs
+    const handleAnchorClick = (e: Event) => {
+      e.preventDefault();
+      const target = e.target as HTMLAnchorElement;
+      const targetId = target.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          // Update URL for SEO without triggering page reload
+          history.pushState(null, '', targetId);
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
         }
-      });
+      }
+    };
+
+    // Use event delegation for better performance
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        handleAnchorClick(e);
+      }
     });
     
     // Check if user has seen the disclaimer
@@ -106,8 +115,9 @@ const Index = () => {
       return () => clearTimeout(timer);
     }
     
-    // Add page view tracking for SEO analytics
-    if (typeof gtag !== 'undefined') {
+    // Add page view tracking for SEO analytics (only if gtag is available)
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      const gtag = (window as any).gtag;
       gtag('config', 'GA_MEASUREMENT_ID', {
         page_title: 'Free AI Tools | AI Web Tools - Best AI Software & Applications 2024',
         page_location: window.location.href
@@ -115,7 +125,8 @@ const Index = () => {
     }
     
     return () => {
-      // Clean up if needed
+      // Clean up event listeners
+      document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 

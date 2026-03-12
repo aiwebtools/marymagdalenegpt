@@ -33,7 +33,7 @@ const VideoSection = () => {
   const playerRef = useRef<any>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoIdRef = useRef("7qxEnBR2BwQ");
-  const apiLoadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const apiLoadingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Define the onYouTubeIframeAPIReady function globally

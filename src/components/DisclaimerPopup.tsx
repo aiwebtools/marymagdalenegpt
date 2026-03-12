@@ -57,39 +57,35 @@ const DisclaimerPopup = ({ onAgree, show }: DisclaimerPopupProps) => {
             </div>
             
             {/* Content */}
-            <div className="p-4 md:p-6 max-h-[60vh] overflow-y-auto space-y-4 relative z-10">
-              <div className="flex gap-3 items-start bg-divine/5 p-4 rounded-lg border border-divine/20">
-                <Info className="text-divine-light h-5 w-5 mt-1 flex-shrink-0" />
-                <p className="font-[Cormorant_Garamond] text-base md:text-lg italic">
+            <div className="p-3 md:p-4 max-h-[55vh] overflow-y-auto space-y-3 relative z-10">
+              <div className="flex gap-2 items-start bg-divine/5 p-3 rounded-lg border border-divine/20">
+                <Info className="text-divine-light h-4 w-4 mt-0.5 flex-shrink-0" />
+                <p className="font-[Cormorant_Garamond] text-sm md:text-base italic leading-snug">
                   Mary Magdalene GPT provides spiritual content based on unaltered Gnostic Christian texts 
                   discovered in the Nag Hammadi Library in 1945 and other spiritual traditions. This is an AI 
                   interpretation and not a channel to a historical or spiritual entity.
                 </p>
               </div>
               
-              <div className="bg-amber-900/20 p-4 rounded-lg border border-amber-500/30">
-                <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed text-amber-100">
-                  <span className="font-semibold text-amber-200">Important:</span> This tool is designed for 
+              <div className="bg-amber-900/20 p-3 rounded-lg border border-amber-500/30">
+                <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug text-amber-100">
+                  <span className="font-semibold text-amber-200">Important:</span> This tool is for 
                   <span className="text-divine shimmer-text font-semibold"> educational and religious research purposes only</span>. 
-                  True connection with God cannot be found within a computer. For authentic spiritual guidance and divine connection, 
-                  seek communion through prayer, meditation, and your personal relationship with the Divine.
+                  True connection with God cannot be found within a computer. Seek authentic spiritual guidance through prayer, meditation, and your personal relationship with the Divine.
                 </p>
               </div>
               
-              <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed">
-                This service is designed for <span className="text-divine shimmer-text font-semibold">educational, inspirational, and entertainment</span> purposes only.
-                It is not a substitute for professional advice in areas of mental health, medical care, legal issues, 
-                financial decisions, or other specialized fields.
+              <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug">
+                This service is for <span className="text-divine shimmer-text font-semibold">educational, inspirational, and entertainment</span> purposes only. It is not a substitute for professional advice in mental health, medical care, legal, financial, or other specialized fields.
               </p>
               
-              <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed">
-                By continuing to use this service, you acknowledge these limitations and agree that AI WEB TOOLS LLC is not liable
-                for any consequences arising from using Mary Magdalene GPT or the information it provides.
+              <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug">
+                By continuing, you acknowledge these limitations and agree that AI WEB TOOLS LLC is not liable for any consequences arising from using Mary Magdalene GPT.
               </p>
             </div>
             
             {/* Action buttons */}
-            <div className="p-4 md:p-6 border-t border-white/10 flex justify-center relative z-10">
+            <div className="p-3 md:p-4 border-t border-white/10 flex justify-center relative z-10">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

@@ -85,7 +85,7 @@ const DisclaimerPopup = ({ onAgree, show }: DisclaimerPopupProps) => {
             </div>
             
             {/* Action buttons */}
-            <div className="p-4 md:p-6 border-t border-white/10 flex justify-center relative z-10">
+            <div className="p-3 md:p-4 border-t border-white/10 flex justify-center relative z-10">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

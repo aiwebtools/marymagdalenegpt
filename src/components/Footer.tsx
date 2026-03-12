@@ -8,7 +8,7 @@ const Footer = () => {
     { name: "✨ TALK TO MARY MAGDALENE GPT ✨", href: "https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" },
     { name: "🔮 FAQ", href: "#faq" },
     { name: "📜 Disclaimer", href: "#disclaimer" },
-    { name: "⚡ More AI Tools", href: "https://www.aiwebtools.ai" }
+    { name: "⚡ More AI Tools", href: "https://aiwebtools.lovable.app/?via=aiwebtools" }
   ];
 
   const legalLinks = [
@@ -59,7 +59,7 @@ const Footer = () => {
                   Mary Magdalene GPT
                 </span>
                 <span className="text-sm text-mystic-gold opacity-90">
-                  <a href="https://www.aiwebtools.ai" className="hover:text-divine-celestial transition-colors animate-shimmer">
+                  <a href="https://aiwebtools.lovable.app/?via=aiwebtools" className="hover:text-divine-celestial transition-colors animate-shimmer">
                     ✧ Presented by AiWebTools.Ai ✧
                   </a>
                 </span>
@@ -145,7 +145,7 @@ const Footer = () => {
         
         <div className="border-t border-divine-celestial/20 pt-8 flex flex-col md:flex-row justify-between items-center glass-card p-6 shadow-divine">
           <a 
-            href="https://www.aiwebtools.ai" 
+            href="https://aiwebtools.lovable.app/?via=aiwebtools" 
             className="text-gray-400 hover:text-divine-celestial transition-colors text-base animate-shimmer bg-celestial-gradient bg-clip-text text-transparent"
           >
             ✨ © {currentYear} AI WEB TOOLS LLC. All rights reserved. Blessed be. ✨

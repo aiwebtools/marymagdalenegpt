@@ -21,7 +21,7 @@ const Header = () => {
     { name: "✨ TALK TO MARY MAGDALENE GPT ✨", href: "https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" },
     { name: "🔮 FAQ", href: "#faq" },
     { name: "📜 Disclaimer", href: "#disclaimer" },
-    { name: "⚡ More AI Tools", href: "https://www.aiwebtools.ai" }
+    { name: "⚡ More AI Tools", href: "https://aiwebtools.lovable.app/?via=aiwebtools" }
   ];
 
   return (
@@ -56,7 +56,7 @@ const Header = () => {
               Mary Magdalene GPT
             </span>
             <span className="text-xs text-mystic-gold opacity-90">
-              <a href="https://www.aiwebtools.ai" className="hover:text-divine-celestial transition-colors animate-shimmer">
+              <a href="https://aiwebtools.lovable.app/?via=aiwebtools" className="hover:text-divine-celestial transition-colors animate-shimmer">
                 ✧ Presented by AiWebTools.Ai ✧
               </a>
             </span>

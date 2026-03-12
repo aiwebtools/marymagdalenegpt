@@ -56,7 +56,7 @@ const Header = () => {
               Mary Magdalene GPT
             </span>
             <span className="text-xs text-mystic-gold opacity-90">
-              <a href="https://www.aiwebtools.ai" className="hover:text-divine-celestial transition-colors animate-shimmer">
+              <a href="https://aiwebtools.lovable.app/?via=aiwebtools" className="hover:text-divine-celestial transition-colors animate-shimmer">
                 ✧ Presented by AiWebTools.Ai ✧
               </a>
             </span>

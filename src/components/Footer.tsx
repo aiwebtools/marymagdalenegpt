@@ -145,7 +145,7 @@ const Footer = () => {
         
         <div className="border-t border-divine-celestial/20 pt-8 flex flex-col md:flex-row justify-between items-center glass-card p-6 shadow-divine">
           <a 
-            href="https://www.aiwebtools.ai" 
+            href="https://aiwebtools.lovable.app/?via=aiwebtools" 
             className="text-gray-400 hover:text-divine-celestial transition-colors text-base animate-shimmer bg-celestial-gradient bg-clip-text text-transparent"
           >
             ✨ © {currentYear} AI WEB TOOLS LLC. All rights reserved. Blessed be. ✨

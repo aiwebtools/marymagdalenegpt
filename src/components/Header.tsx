@@ -21,7 +21,7 @@ const Header = () => {
     { name: "✨ TALK TO MARY MAGDALENE GPT ✨", href: "https://chatgpt.com/g/g-Looq4sK74-mary-magdalene-gpt" },
     { name: "🔮 FAQ", href: "#faq" },
     { name: "📜 Disclaimer", href: "#disclaimer" },
-    { name: "⚡ More AI Tools", href: "https://www.aiwebtools.ai" }
+    { name: "⚡ More AI Tools", href: "https://aiwebtools.lovable.app/?via=aiwebtools" }
   ];
 
   return (

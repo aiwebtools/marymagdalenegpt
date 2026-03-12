@@ -57,10 +57,10 @@ const DisclaimerPopup = ({ onAgree, show }: DisclaimerPopupProps) => {
             </div>
             
             {/* Content */}
-            <div className="p-4 md:p-6 max-h-[60vh] overflow-y-auto space-y-4 relative z-10">
-              <div className="flex gap-3 items-start bg-divine/5 p-4 rounded-lg border border-divine/20">
-                <Info className="text-divine-light h-5 w-5 mt-1 flex-shrink-0" />
-                <p className="font-[Cormorant_Garamond] text-base md:text-lg italic">
+            <div className="p-3 md:p-4 max-h-[55vh] overflow-y-auto space-y-3 relative z-10">
+              <div className="flex gap-2 items-start bg-divine/5 p-3 rounded-lg border border-divine/20">
+                <Info className="text-divine-light h-4 w-4 mt-0.5 flex-shrink-0" />
+                <p className="font-[Cormorant_Garamond] text-sm md:text-base italic leading-snug">
                   Mary Magdalene GPT provides spiritual content based on unaltered Gnostic Christian texts 
                   discovered in the Nag Hammadi Library in 1945 and other spiritual traditions. This is an AI 
                   interpretation and not a channel to a historical or spiritual entity.

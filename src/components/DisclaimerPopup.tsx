@@ -67,24 +67,20 @@ const DisclaimerPopup = ({ onAgree, show }: DisclaimerPopupProps) => {
                 </p>
               </div>
               
-              <div className="bg-amber-900/20 p-4 rounded-lg border border-amber-500/30">
-                <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed text-amber-100">
-                  <span className="font-semibold text-amber-200">Important:</span> This tool is designed for 
+              <div className="bg-amber-900/20 p-3 rounded-lg border border-amber-500/30">
+                <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug text-amber-100">
+                  <span className="font-semibold text-amber-200">Important:</span> This tool is for 
                   <span className="text-divine shimmer-text font-semibold"> educational and religious research purposes only</span>. 
-                  True connection with God cannot be found within a computer. For authentic spiritual guidance and divine connection, 
-                  seek communion through prayer, meditation, and your personal relationship with the Divine.
+                  True connection with God cannot be found within a computer. Seek authentic spiritual guidance through prayer, meditation, and your personal relationship with the Divine.
                 </p>
               </div>
               
-              <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed">
-                This service is designed for <span className="text-divine shimmer-text font-semibold">educational, inspirational, and entertainment</span> purposes only.
-                It is not a substitute for professional advice in areas of mental health, medical care, legal issues, 
-                financial decisions, or other specialized fields.
+              <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug">
+                This service is for <span className="text-divine shimmer-text font-semibold">educational, inspirational, and entertainment</span> purposes only. It is not a substitute for professional advice in mental health, medical care, legal, financial, or other specialized fields.
               </p>
               
-              <p className="font-[Cormorant_Garamond] text-base md:text-lg leading-relaxed">
-                By continuing to use this service, you acknowledge these limitations and agree that AI WEB TOOLS LLC is not liable
-                for any consequences arising from using Mary Magdalene GPT or the information it provides.
+              <p className="font-[Cormorant_Garamond] text-sm md:text-base leading-snug">
+                By continuing, you acknowledge these limitations and agree that AI WEB TOOLS LLC is not liable for any consequences arising from using Mary Magdalene GPT.
               </p>
             </div>
             
